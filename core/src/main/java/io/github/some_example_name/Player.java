@@ -38,6 +38,9 @@ public class Player {
         if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             x -= dx;
         }
+        if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            x += dx;
+        }
 
         // Apply gravity continuously
         dy += acc * Gdx.graphics.getDeltaTime();
@@ -59,6 +62,102 @@ public class Player {
             dy = 0; // Stop the player from going below the ground
             time = 0; // Reset the time
         }
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public float getDx() {
+        return dx;
+    }
+
+    public void setDx(float dx) {
+        this.dx = dx;
+    }
+
+    public float getDy() {
+        return dy;
+    }
+
+    public void setDy(float dy) {
+        this.dy = dy;
+    }
+
+    public ShapeRenderer getShape() {
+        return shape;
+    }
+
+    public void setShape(ShapeRenderer shape) {
+        this.shape = shape;
+    }
+
+    public Boolean getIsalive() {
+        return isalive;
+    }
+
+    public void setIsalive(Boolean isalive) {
+        this.isalive = isalive;
+    }
+
+    public float getAcc() {
+        return acc;
+    }
+
+    public void setAcc(float acc) {
+        this.acc = acc;
+    }
+
+    public float getTime() {
+        return time;
+    }
+
+    public void setTime(float time) {
+        this.time = time;
+    }
+
+    public float getJumpVelocity() {
+        return jumpVelocity;
+    }
+
+    public void setJumpVelocity(float jumpVelocity) {
+        this.jumpVelocity = jumpVelocity;
+    }
+
+    public float getV() {
+        return v;
+    }
+
+    public void setV(float v) {
+        this.v = v;
     }
 
     public void dispose(){

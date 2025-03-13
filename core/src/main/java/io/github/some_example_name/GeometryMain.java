@@ -6,14 +6,17 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import jdk.tools.jlink.internal.Platform;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class GeometryMain extends ApplicationAdapter {
     private Player player;
+    private Platforms platform;
 
     @Override
     public void create() {
-        player = new Player(100,100,40,40);
+        player = new Player(750,100,40,40);
+        platform = new Platforms(600,80,200,10);
     }
 
     @Override
@@ -21,6 +24,9 @@ public class GeometryMain extends ApplicationAdapter {
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         player.draw();
         player.move();
+        platform.draw();
+        platform.player2PlatformCollision(player);
+        platform.platformMove();
 
     }
 
