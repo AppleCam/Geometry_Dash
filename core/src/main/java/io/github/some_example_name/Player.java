@@ -11,11 +11,12 @@ public class Player {
     public int width;
     public int height;
     public float dx = 5;
-    public float dy = 5;
+    public float dy = 0; // Initial vertical velocity is 0
     private ShapeRenderer shape;
     public Boolean isalive = true;
-    public float acc = -10;
+    public float acc = -175; // Gravity
     public float time = 0;
+    public float jumpVelocity = 100; // Initial upward velocity for jump
     public float v = dy + (acc*time);
     ///V = u + (a*t)
 
@@ -34,18 +35,29 @@ public class Player {
     }
 
     public void move() {
-
-
         if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             x -= dx;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-            for(int i = 0; i <= 10; i++){
-                v = dy + (acc*time);
-                time++;
 
+        // Apply gravity continuously
+        dy += acc * Gdx.graphics.getDeltaTime();
+
+        // Jump
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+            if (y >= 0) { // Make sure the player is on the ground before jumping
+                dy = jumpVelocity; // Set the initial upward velocity
+                time = 0; // Reset the time
             }
-            dy = v;
+        }
+
+        // Update position based on velocity
+        y += dy * Gdx.graphics.getDeltaTime();
+
+        // Keep the player within the screen bounds (adjust as needed)
+        if (y < 0) {
+            y = 0;
+            dy = 0; // Stop the player from going below the ground
+            time = 0; // Reset the time
         }
     }
 

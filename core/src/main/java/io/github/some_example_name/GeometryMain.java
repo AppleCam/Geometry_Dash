@@ -13,7 +13,7 @@ public class GeometryMain extends ApplicationAdapter {
 
     @Override
     public void create() {
-        player = new Player(100,900,40,40);
+        player = new Player(100,100,40,40);
     }
 
     @Override
