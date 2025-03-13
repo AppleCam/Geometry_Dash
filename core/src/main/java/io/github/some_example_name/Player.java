@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class Player {
 
+    // Player attributes
     public float x;
     public float y;
     public int width;
@@ -17,9 +18,10 @@ public class Player {
     public float acc = -175; // Gravity
     public float time = 0;
     public float jumpVelocity = 200; // Initial upward velocity for jump
-    public float v = dy + (acc*time);
+    public float v = dy + (acc * time); // Calculate initial velocity (not used directly)
     ///V = u + (a*t)
 
+    // Constructor to initialize player properties
     public Player(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
@@ -28,13 +30,19 @@ public class Player {
         shape = new ShapeRenderer();
     }
 
-    public void draw(){
+    // Method to draw the player
+    public void draw() {
+        // Begin drawing with a filled rectangle
         shape.begin(ShapeRenderer.ShapeType.Filled);
-        shape.rect(x,y,width,height);
+        // Draw the player rectangle
+        shape.rect(x, y, width, height);
+        // End drawing
         shape.end();
     }
 
+    // Method to handle player movement and physics
     public void move() {
+        // Handle left/right movement
         if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             x -= dx;
         }
@@ -45,9 +53,10 @@ public class Player {
         // Apply gravity continuously
         dy += acc * Gdx.graphics.getDeltaTime();
 
-        // Jump
+        // Handle jumping
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-            if (y >= 0) { // Make sure the player is on the ground before jumping
+            // Only jump if the player is on the ground
+            if (y >= 0) {
                 dy = jumpVelocity; // Set the initial upward velocity
                 time = 0; // Reset the time
             }
@@ -64,6 +73,7 @@ public class Player {
         }
     }
 
+    // Getters and setters for player attributes
     public float getX() {
         return x;
     }
@@ -160,7 +170,8 @@ public class Player {
         this.v = v;
     }
 
-    public void dispose(){
-
+    public void dispose() {
+        // Dispose of the ShapeRenderer
+        shape.dispose();
     }
 }
