@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class Platforms {
 
-    public int x,y,width,height,dy,dx = 10;
+    public int x,y,width,height,dy,dx = 5;
     private ShapeRenderer shape;
     public boolean allowMovement = true;
 
@@ -16,6 +16,7 @@ public class Platforms {
         this.height=height;
         shape = new ShapeRenderer();
     }
+
 
     public void draw(){
         shape.begin(ShapeRenderer.ShapeType.Filled);
@@ -30,6 +31,8 @@ public class Platforms {
             if (player.getX() + player.getWidth() >= x && player.getX() <= x + width) {
                 // Player is colliding with the platform
                 player.setY(y + height);
+
+                player.setX(player.getX() - dx);
             }
         }
     }

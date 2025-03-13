@@ -16,7 +16,7 @@ public class Player {
     public Boolean isalive = true;
     public float acc = -175; // Gravity
     public float time = 0;
-    public float jumpVelocity = 100; // Initial upward velocity for jump
+    public float jumpVelocity = 200; // Initial upward velocity for jump
     public float v = dy + (acc*time);
     ///V = u + (a*t)
 
