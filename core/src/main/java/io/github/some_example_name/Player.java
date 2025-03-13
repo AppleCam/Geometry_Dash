@@ -49,6 +49,9 @@ public class Player {
         if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             x += dx;
         }
+        if (Gdx.input.isKeyPressed(Input.Keys.R)){
+            y = 100;
+        }
 
         // Apply gravity continuously
         dy += acc * Gdx.graphics.getDeltaTime();
@@ -72,6 +75,7 @@ public class Player {
             time = 0; // Reset the time
         }
     }
+
 
     // Getters and setters for player attributes
     public float getX() {

@@ -44,6 +44,7 @@ public class GeometryMain extends ApplicationAdapter {
 
         // Draw the portal
         portal.draw();
+        portal.flipGravity(player);
     }
 
     @Override
