@@ -12,15 +12,17 @@ public class GeometryMain extends ApplicationAdapter {
     private Player player;
     private Platforms platform;
     private Platforms platform2;
+    private Platforms platform3;
     private Portal portal;
 
     @Override
     public void create() {
         // Initialize player, platforms, and portal objects
-        player = new Player(750,100,40,40);
-        platform = new Platforms(600,80,200,10);
-        platform2 = new Platforms(900,80,100  ,10);
-        portal = new Portal(750,200,45);
+        player = new Player(110,100,40,40);
+        platform = new Platforms(110,90,200,10);
+        platform2 = new Platforms(450,175,222,10);
+        platform3 = new Platforms(800,500,222,10);
+        portal = new Portal(750,275,22.5F,100);
     }
 
     @Override
@@ -35,12 +37,16 @@ public class GeometryMain extends ApplicationAdapter {
         // Draw, check collision, and move the first platform
         platform.draw();
         platform.player2PlatformCollision(player);
-        platform.platformMove();
+        //platform.platformMove();
 
         // Draw, check collision, and move the second platform
         platform2.draw();
         platform2.player2PlatformCollision(player);
-        platform2.platformMove();
+        //platform2.platformMove();
+
+        //Draw, check collision, and move the third platform
+        platform3.draw();
+        platform3.player2PlatformCollision(player);
 
         // Draw the portal
         portal.draw();

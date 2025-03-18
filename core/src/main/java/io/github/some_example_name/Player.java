@@ -15,9 +15,9 @@ public class Player {
     public float dy = 0; // Initial vertical velocity is 0
     private ShapeRenderer shape;
     public Boolean isalive = true;
-    public float acc = -175; // Gravity
+    public float acc = -600; // Increased gravity
     public float time = 0;
-    public float jumpVelocity = 200; // Initial upward velocity for jump
+    public float jumpVelocity = 300; // Adjusted jump velocity
     public float v = dy + (acc * time); // Calculate initial velocity (not used directly)
     ///V = u + (a*t)
 
@@ -50,7 +50,7 @@ public class Player {
             x += dx;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.R)){
-            y = 100;
+            y = 110;
         }
 
         // Apply gravity continuously
@@ -60,7 +60,11 @@ public class Player {
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             // Only jump if the player is on the ground
             if (y >= 0) {
-                dy = jumpVelocity; // Set the initial upward velocity
+                if (acc > 0) {
+                    dy = -jumpVelocity; // Set the initial downward velocity for flipped gravity
+                } else {
+                    dy = jumpVelocity; // Set the initial upward velocity for normal gravity
+                }
                 time = 0; // Reset the time
             }
         }
@@ -75,7 +79,6 @@ public class Player {
             time = 0; // Reset the time
         }
     }
-
 
     // Getters and setters for player attributes
     public float getX() {

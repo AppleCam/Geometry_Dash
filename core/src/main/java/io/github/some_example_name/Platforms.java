@@ -38,11 +38,15 @@ public class Platforms {
             // Check if the player's right is to the right of the platform's left and the player's left is to the left of the platform's right
             if (player.getX() + player.getWidth() >= x && player.getX() <= x + width) {
                 // Player is colliding with the platform
-                // Set the player's Y position to the top of the platform
-                player.setY(y + height);
-
-                // Move the player slightly to the left to prevent getting stuck
-                player.setX(player.getX() - dx);
+                if (player.getAcc() > 0) {
+                    // Gravity is flipped, collide with the bottom of the platform
+                    player.setY(y - player.getHeight());
+                } else {
+                    // Normal gravity, collide with the top of the platform
+                    player.setY(y + height);
+                }
+                // Stop the player's vertical movement to prevent clipping
+                player.setDy(0);
             }
         }
     }

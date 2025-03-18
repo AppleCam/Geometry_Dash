@@ -7,33 +7,35 @@ public class Portal {
 
     // Attributes for the portal
     public Player player; // Reference to the player object
-    public float x, y, circumfrence; // Position and size of the portal
+    public float x, y, height,width; // Position and size of the portal
     private ShapeRenderer shape; // ShapeRenderer for drawing the portal
 
     // Constructor to initialize the portal
-    public Portal(float x, float y, float circumfrence) {
+    public Portal(float x, float y, float height, float width) {
         this.x = x;
         this.y = y;
-        this.circumfrence = circumfrence;
+        this.height = height;
+        this.width = width;
         shape = new ShapeRenderer();
     }
 
     // Method to draw the portal
     public void draw() {
-        // Begin drawing with a filled shape
+
         shape.begin(ShapeRenderer.ShapeType.Filled);
         // Set the color of the portal to red
         shape.setColor(Color.RED);
         // Draw the portal as a circle
-        shape.circle(x, y, circumfrence);
+        // Begin drawing with a filled shape
+        shape.ellipse(x, y, height, width);
         // End drawing
         shape.end();
     }
 
     // Method to flip the player's gravity when they enter the portal
     public void flipGravity(Player player) {
-        // Check if the player is within the portal's radius
-        if (Math.sqrt(Math.pow(player.getX() - x, 2) + Math.pow(player.getY() - y, 2)) <= circumfrence) {
+        // Check if the player is within the portal's bounds
+        if (player.getX() + player.getWidth() >= x && player.getX() <= x + width && player.getY() + player.getHeight() >= y && player.getY() <= y + height) {
             // Flip the player's gravity by multiplying their acceleration by -1
             player.setAcc(player.getAcc() * -1);
         }
