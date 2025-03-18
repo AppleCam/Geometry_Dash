@@ -22,7 +22,7 @@ public class GeometryMain extends ApplicationAdapter {
         platform = new Platforms(110,90,200,10);
         platform2 = new Platforms(450,175,222,10);
         platform3 = new Platforms(800,500,222,10);
-        portal = new Portal(750,275,22.5F,100);
+        portal = new Portal(700,275,22.5F,100);
     }
 
     @Override
