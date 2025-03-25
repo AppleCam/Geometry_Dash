@@ -1,3 +1,4 @@
+// Portal.java
 package io.github.some_example_name;
 
 import com.badlogic.gdx.graphics.Color;
@@ -19,6 +20,7 @@ public class Portal {
     }
 
     public void draw() {
+        // Draw the portal
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.RED);
         shapeRenderer.ellipse(posX, posY, MinorRadius, MajorRadius);
@@ -26,12 +28,14 @@ public class Portal {
     }
 
     public boolean checkCollision(Player player) {
+        // Check for collision with the player
         float previousPlayerX = player.getX() - player.getDx() * Gdx.graphics.getDeltaTime();
         float previousPlayerY = player.getY() - player.getDy() * Gdx.graphics.getDeltaTime();
         return lineIntersectsEllipse(previousPlayerX, previousPlayerY, player.getX(), player.getY(), posX, posY, MinorRadius, MajorRadius);
     }
 
     private boolean lineIntersectsEllipse(float x1, float y1, float x2, float y2, float ellipseX, float ellipseY, float ellipseWidth, float ellipseHeight) {
+        // Check if a line intersects with an ellipse
         float centerX = ellipseX + ellipseWidth / 2;
         float centerY = ellipseY + ellipseHeight / 2;
         float radiusX = ellipseWidth / 2;
@@ -50,12 +54,14 @@ public class Portal {
     }
 
     public void flipGravity(Player player) {
+        // Flip the player's gravity if they collide with the portal
         if (checkCollision(player)) {
             player.setAcc(player.getAcc() * -1);
         }
     }
 
     public static Portal generateRandomPortal(int previousX, int previousY) {
+        // Generate a new portal at a random position
         Random random = new Random();
         float posX = previousX + 300; // Fixed horizontal distance
         float posY = previousY + random.nextInt(200) - 100; // Allow some vertical variation

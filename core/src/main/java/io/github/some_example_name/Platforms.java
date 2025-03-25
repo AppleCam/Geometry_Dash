@@ -1,3 +1,4 @@
+// Platforms.java
 package io.github.some_example_name;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class Platforms {
     }
 
     public void draw() {
+        // Draw the platform
         shape.begin(ShapeRenderer.ShapeType.Filled);
         shape.setColor(0.4f, 0.8f, 2.5f, 0f);
         shape.rect(x, y, width, height);
@@ -29,6 +31,7 @@ public class Platforms {
     }
 
     public void player2PlatformCollision(Player player) {
+        // Check for collision with the player
         if (player.getY() + player.getHeight() >= y && player.getY() <= y + height) {
             if (player.getX() + player.getWidth() >= x && player.getX() <= x + width) {
                 if (player.getAcc() > 0) {
@@ -42,6 +45,7 @@ public class Platforms {
     }
 
     public void platformMove() {
+        // Move the platform to the left
         if (allowMovement) {
             x -= dx;
             if (x + width < 0) {
