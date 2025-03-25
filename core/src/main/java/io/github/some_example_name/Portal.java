@@ -7,15 +7,15 @@ import com.badlogic.gdx.Gdx;
 public class Portal {
 
     // Attributes for the portal
-    public float posX, posY, portalHeight, portalWidth; // Position and size of the portal
+    public float posX, posY, MinorRadius, MajorRadius; // Position and size of the portal
     private ShapeRenderer shapeRenderer; // ShapeRenderer for drawing the portal
 
     // Constructor to initialize the portal
-    public Portal(float posX, float posY, float portalHeight, float portalWidth) {
+    public Portal(float posX, float posY, float MinorRadius, float MajorRadius) {
         this.posX = posX;
         this.posY = posY;
-        this.portalHeight = portalHeight;
-        this.portalWidth = portalWidth;
+        this.MinorRadius = MinorRadius;
+        this.MajorRadius = MajorRadius;
         shapeRenderer = new ShapeRenderer();
     }
 
@@ -23,7 +23,7 @@ public class Portal {
     public void draw() {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Color.RED);
-        shapeRenderer.ellipse(posX, posY, portalWidth, portalHeight);
+        shapeRenderer.ellipse(posX, posY, MinorRadius, MajorRadius);
         shapeRenderer.end();
     }
 
@@ -34,7 +34,7 @@ public class Portal {
         float previousPlayerY = player.getY() - player.getDy() * Gdx.graphics.getDeltaTime();
 
         // Check for collisions along the path from the previous position to the current position
-        return lineIntersectsEllipse(previousPlayerX, previousPlayerY, player.getX(), player.getY(), posX, posY, portalWidth, portalHeight);
+        return lineIntersectsEllipse(previousPlayerX, previousPlayerY, player.getX(), player.getY(), posX, posY,MinorRadius, MajorRadius);
     }
 
     // Helper method to check if a line intersects an ellipse

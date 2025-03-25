@@ -15,6 +15,7 @@ public class GeometryMain extends ApplicationAdapter {
     private Platforms platform3;
     private Portal portal;
 
+
     @Override
     public void create() {
         // Initialize player, platforms, and portal objects
@@ -22,13 +23,14 @@ public class GeometryMain extends ApplicationAdapter {
         platform = new Platforms(110,90,200,10);
         platform2 = new Platforms(450,175,222,10);
         platform3 = new Platforms(800,500,222,10);
-        portal = new Portal(700,275,22.5F,100);
+        portal = new Portal(700,275,10,100);
     }
 
     @Override
     public void render() {
         // Clear the screen with a specific color
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
+
 
         // Draw and move the player
         player.draw();
